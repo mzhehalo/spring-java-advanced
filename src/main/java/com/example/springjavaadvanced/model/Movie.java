@@ -1,6 +1,7 @@
 package com.example.springjavaadvanced.model;
 
 import com.example.springjavaadvanced.validation.UniqueMovieTitle;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,9 @@ public class Movie {
     private String description;
     @Positive
     private int duration;
+
+    @JsonIgnore
+    @ManyToOne(targetEntity = Director.class, optional = false, cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "director_id", insertable = false, updatable = false, nullable = false)
+    private Director director;
 }

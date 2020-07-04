@@ -1,7 +1,6 @@
 package com.example.springjavaadvanced.controller;
 
 import com.example.springjavaadvanced.model.Movie;
-import com.example.springjavaadvanced.repository.MovieRepository;
 import com.example.springjavaadvanced.responses.NoFoundID;
 import com.example.springjavaadvanced.service.IMovieService;
 import com.example.springjavaadvanced.validation.MovieValidator;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,10 +27,10 @@ public class MovieController {
         return movieService.getAllMovies();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, value = "/{directorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Movie createMovie(@RequestBody @Valid Movie movie) {
-        return movieService.insertMovie(movie);
+    public Movie createMovie(@RequestBody @Valid Movie movie, @PathVariable Integer directorId) {
+        return movieService.insertMovie(movie, directorId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
