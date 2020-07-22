@@ -5,12 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -27,4 +25,8 @@ public class Director {
     private String lastName;
     @JsonFormat(pattern = "dd-MMM-yyyy")
     private LocalDate birthDate;
+
+    @OneToMany(targetEntity = Movie.class)
+    @JoinColumn(name = "director_id", insertable = false, updatable = false)
+    private List<Movie> movies;
 }

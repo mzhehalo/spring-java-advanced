@@ -1,8 +1,6 @@
 package com.example.springjavaadvanced.validation;
 
-import com.example.springjavaadvanced.repository.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

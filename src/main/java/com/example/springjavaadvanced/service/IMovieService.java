@@ -1,12 +1,12 @@
 package com.example.springjavaadvanced.service;
 
+import com.example.springjavaadvanced.dtos.MovieDTO;
 import com.example.springjavaadvanced.model.Movie;
-
-import java.util.List;
+import org.springframework.data.domain.PageRequest;
 
 public interface IMovieService {
 
-    List<Movie> getAllMovies();
+    MovieDTO getMovies(PageRequest pageRequest);
 
     Movie insertMovie(Movie movie, int directorId);
 
