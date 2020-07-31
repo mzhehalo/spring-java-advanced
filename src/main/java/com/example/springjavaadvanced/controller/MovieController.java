@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class MovieController {
 
     @Autowired
-    private IMovieService iMovieService;
+    private IMovieService movieService;
 
     @Autowired
     private MovieValidator movieValidator;
@@ -28,13 +28,13 @@ public class MovieController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
-        return iMovieService.getMovies(pageRequest);
+        return movieService.getMovies(pageRequest);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/{directorId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie createMovie(@RequestBody @Valid Movie movie, @PathVariable Integer directorId) {
-        return iMovieService.insertMovie(movie, directorId);
+        return movieService.insertMovie(movie, directorId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -52,7 +52,7 @@ public class MovieController {
 //        return movie;
 
         movie.setId(id);
-        return iMovieService.updateMovie(movie);
+        return movieService.updateMovie(movie);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -67,8 +67,8 @@ public class MovieController {
 //            throw new NoFoundID();
 //        }
 
-        if (iMovieService.existsById(id)) {
-            iMovieService.deleteMovie(id);
+        if (movieService.existsById(id)) {
+            movieService.deleteMovie(id);
         } else {
             throw new NoFoundID();
         }

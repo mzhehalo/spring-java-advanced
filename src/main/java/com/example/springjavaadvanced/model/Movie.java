@@ -31,6 +31,6 @@ public class Movie {
 
     @JsonIgnore
     @ManyToOne(targetEntity = Director.class, optional = false, cascade = CascadeType.PERSIST)
-////    @JoinColumn(name = "director_id", insertable = false, updatable = false, nullable = false)
+//    @JoinColumn(name = "director_id", insertable = false, updatable = false, nullable = false)
     private Director director;
 }

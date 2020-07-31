@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
@@ -40,6 +41,7 @@ public class MovieService implements IMovieService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This movie title already exist");
         }
         directorRepository.findById(directorId).ifPresent(director -> {
+            movie.setDirector(director);
             movieRepository.save(movie);
         });
         return movie;
