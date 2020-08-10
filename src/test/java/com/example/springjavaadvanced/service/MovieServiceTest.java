@@ -7,39 +7,25 @@ import com.example.springjavaadvanced.repository.DirectorRepository;
 import com.example.springjavaadvanced.repository.MovieRepository;
 import io.jsonwebtoken.lang.Assert;
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.jupiter.api.*;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockitoPostProcessor;
 import org.springframework.data.domain.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.parameters.P;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @EnableAutoConfiguration(exclude = {HibernateJpaAutoConfiguration.class,
@@ -49,14 +35,8 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(classes = MovieService.class)
 public class MovieServiceTest {
 
-//    @Autowired
-//    private MockMvc mockMvc;
-
     @InjectMocks
     MovieService movieService;
-
-//    @MockBean
-//    private IMovieService movieService;
 
     @MockBean
     private DirectorRepository directorRepository;
