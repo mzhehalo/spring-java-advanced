@@ -1,10 +1,8 @@
 package com.example.springjavaadvanced.validation;
 
 import com.example.springjavaadvanced.model.Movie;
-import com.example.springjavaadvanced.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.util.StringHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

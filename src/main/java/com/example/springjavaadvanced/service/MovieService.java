@@ -25,6 +25,7 @@ public class MovieService implements IMovieService {
 
     public MovieDTO getMovies(PageRequest pageRequest) {
         Page<Movie> moviePages = movieRepository.findAll(pageRequest);
+
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setMovies(moviePages.getContent());
         movieDTO.setEmpty(moviePages.isEmpty());
